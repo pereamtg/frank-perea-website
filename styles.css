@@ -158,6 +158,7 @@ button { font-family: inherit; cursor: pointer; }
   background: rgba(255,255,255,.28);
 }
 .btn--gold .btn__arrow { background: rgba(15,29,61,.16); }
+.btn__text-short { display: none; }
 
 .btn__icon {
   display: inline-flex;
@@ -1146,17 +1147,16 @@ button { font-family: inherit; cursor: pointer; }
   .hero__ctas       { flex-direction: column; }
   .btn              { white-space: normal; text-align: center; }
   .nav__inner       { height: auto; padding-block: var(--sp-3); flex-wrap: wrap; row-gap: var(--sp-3); }
-  .nav__right       { width: 100%; justify-content: flex-end; }
+  .nav__right       { margin-left: auto; }
   .nav__phone       { display: none; }
   .nav__right .btn  {
-    font-size: var(--fs-xs);
-    padding: .4rem .55rem;
-    white-space: normal;
-    text-align: center;
-    max-width: 105px;
-    line-height: 1.2;
+    font-size: var(--fs-sm);
+    padding: .5rem .8rem;
+    white-space: nowrap;
     border-radius: var(--radius);
   }
+  .nav__right .btn__text-full  { display: none; }
+  .nav__right .btn__text-short { display: inline; }
   .nav__links.open .nav__link {
     font-size: var(--fs-base);
     padding: 1rem 1.25rem;
