@@ -272,13 +272,13 @@ button { font-family: inherit; cursor: pointer; }
   display: none;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.18);
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1.6rem;
   flex-shrink: 0;
   transition: background .15s, border-color .15s;
 }
@@ -1149,17 +1149,12 @@ button { font-family: inherit; cursor: pointer; }
   .nav__phone       { display: none; }
   .nav__right .btn  {
     font-size: var(--fs-xs);
-    padding: .6rem .8rem;
+    padding: .45rem .65rem;
     white-space: normal;
     text-align: center;
-    max-width: 130px;
-    line-height: 1.3;
-    border-radius: var(--radius-lg);
-  }
-  .nav__toggle {
-    width: 2.75rem;
-    height: 2.75rem;
-    font-size: 1.3rem;
+    max-width: 120px;
+    line-height: 1.2;
+    border-radius: var(--radius);
   }
   .nav__links.open .nav__link {
     font-size: var(--fs-base);
