@@ -1109,6 +1109,7 @@ button { font-family: inherit; cursor: pointer; }
   .blog-grid        { grid-template-columns: 1fr; }
   .process-row      { grid-template-columns: 1fr; }
   .hero__ctas       { flex-direction: column; }
+  .btn              { white-space: normal; text-align: center; }
   .nav__inner       { height: auto; padding-block: var(--sp-3); flex-wrap: wrap; row-gap: var(--sp-3); }
   .nav__right       { width: 100%; justify-content: flex-end; }
   .nav__phone       { display: none; }
