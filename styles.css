@@ -447,25 +447,57 @@ button { font-family: inherit; cursor: pointer; }
 .review-card__role { font-size: var(--fs-xs); color: var(--text-soft); margin-top: 2px; }
 
 .closings { margin-top: var(--sp-10); }
+.closings__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-5);
+}
 .closings__head {
   font-family: 'Fraunces', Georgia, serif;
   font-size: var(--fs-xl);
   font-weight: 600;
   color: var(--text);
-  margin-bottom: var(--sp-5);
 }
+.closings__nav { display: flex; gap: var(--sp-2); flex-shrink: 0; }
+.closings__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s, opacity .15s;
+}
+.closings__btn:hover:not(:disabled) {
+  background: var(--c-navy);
+  border-color: var(--c-navy);
+  color: #fff;
+}
+.closings__btn:disabled { opacity: .35; cursor: default; }
 .closings-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
+  display: flex;
   gap: var(--sp-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 }
+.closings-grid::-webkit-scrollbar { display: none; }
 .closings-grid img {
-  width: 100%;
+  flex: 0 0 calc((100% - 2 * var(--sp-5)) / 3);
+  min-width: 0;
   height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
+  scroll-snap-align: start;
 }
 
 .reviews-footer {
@@ -1165,7 +1197,8 @@ button { font-family: inherit; cursor: pointer; }
   .nav__apply { display: none; }
   .contact-form__row { grid-template-columns: 1fr; }
   .reviews-grid   { grid-template-columns: 1fr; }
-  .closings-grid  { grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
+  .closings-grid  { gap: var(--sp-3); }
+  .closings-grid img { flex-basis: calc((100% - var(--sp-3)) / 2); }
   .problem-grid   { grid-template-columns: 1fr; gap: var(--sp-10); }
   .offer-cards    { grid-template-columns: 1fr; }
   .benefits-grid  { grid-template-columns: 1fr 1fr; }

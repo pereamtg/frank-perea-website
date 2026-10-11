@@ -18,6 +18,32 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.closings').forEach(function (box) {
+    var track = box.querySelector('.closings-grid');
+    var buttons = box.querySelectorAll('.closings__btn');
+    if (!track || !buttons.length) return;
+
+    function update() {
+      var max = track.scrollWidth - track.clientWidth - 1;
+      buttons.forEach(function (btn) {
+        btn.disabled = btn.dataset.dir === '-1' ? track.scrollLeft <= 0 : track.scrollLeft >= max;
+      });
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        track.scrollBy({ left: Number(btn.dataset.dir) * (track.clientWidth + gap), behavior: 'smooth' });
+      });
+    });
+
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+});
+
 // GHL's quiz widget auto-scrolls the parent page on each step change, and
 // that calculation sometimes overshoots past the quiz on mobile. Correct it
 // shortly after, but only when the quiz has clearly scrolled just out of view.
