@@ -213,7 +213,9 @@ button { font-family: inherit; cursor: pointer; }
   gap: var(--sp-8);
   height: 64px;
 }
+.nav .rail { max-width: 1440px; }
 .nav__left { display: flex; align-items: center; gap: var(--sp-4); }
+.nav__name, .nav__tag { white-space: nowrap; }
 .nav__brand { display: flex; flex-direction: column; line-height: 1; gap: 2px; }
 .nav__name  { font-family: 'Fraunces', Georgia, serif; font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: -.01em; }
 .nav__tag   { font-size: 0.7rem; font-weight: 600; color: var(--c-gold); letter-spacing: .08em; text-transform: uppercase; }
@@ -1123,8 +1125,27 @@ button { font-family: inherit; cursor: pointer; }
 /* =========================================================
    RESPONSIVE
 ========================================================= */
+/* Nav: drop items in steps so the bar always fits its row */
+@media (max-width: 1440px) {
+  .nav__inner { gap: var(--sp-5); }
+  .nav__phone { margin-left: 0; }
+  .nav__right .btn__text-full  { display: none; }
+  .nav__right .btn__text-short { display: inline; }
+}
+@media (max-width: 1240px) {
+  .nav__apply { display: none; }
+}
+@media (min-width: 901px) and (max-width: 1080px) {
+  .nav__phone { display: none; }
+  .nav__link  { padding: .35rem .55rem; }
+}
+@media (max-width: 680px) {
+  .nav__phone { display: none; }
+}
+
 @media (max-width: 900px) {
   .nav__toggle { display: inline-flex; }
+  .nav__name, .nav__tag { white-space: normal; }
   .nav__links {
     display: none;
     position: absolute;
