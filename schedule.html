@@ -90,7 +90,34 @@
           </p>
         </div>
         <div style="background:var(--bg-alt); border-radius:var(--radius-lg); padding:var(--sp-5);">
-          <iframe src="https://api.leadconnectorhq.com/widget/booking/9woHdesLUOeImkkjqV0r" class="calendar-iframe" style="width: 100%;border:none;overflow: hidden;min-height:500px;" scrolling="no" id="cal-9woHdesLUOeImkkjqV0r"></iframe>
+          <script>
+            // GoHighLevel's embed script hides the calendar until it hears back from it, and can
+            // leave it hidden when it misses those messages. Size the calendar from its own height
+            // messages, and un-hide it if it is still hidden after the page has loaded.
+            (function () {
+              var id = 'cal-9woHdesLUOeImkkjqV0r';
+              window.addEventListener('message', function (e) {
+                if (e.origin !== 'https://api.leadconnectorhq.com' || !Array.isArray(e.data) || e.data[0] !== 'highlevel.setHeight') return;
+                var cal = document.getElementById(id);
+                var h = e.data[1] && Number(e.data[1].height);
+                if (cal && e.source === cal.contentWindow && h > 0) cal.style.setProperty('min-height', h + 'px', 'important');
+              });
+              function unhide() {
+                var cal = document.getElementById(id);
+                if (!cal || (cal.style.visibility !== 'hidden' && cal.style.left !== '-9999px')) return;
+                cal.style.opacity = '1';
+                cal.style.visibility = 'visible';
+                cal.style.pointerEvents = 'auto';
+                cal.style.left = '';
+                cal.style.position = 'relative';
+              }
+              window.addEventListener('load', function () {
+                setTimeout(unhide, 3000);
+                setTimeout(unhide, 8000);
+              });
+            })();
+          </script>
+          <iframe src="https://api.leadconnectorhq.com/widget/booking/9woHdesLUOeImkkjqV0r" class="calendar-iframe" style="width: 100%;border:none;overflow: hidden;min-height:500px;" id="cal-9woHdesLUOeImkkjqV0r" title="Schedule your free numbers review" data-initial-iframe-hidden="true"></iframe>
           <p style="text-align:center;font-size:var(--fs-sm);color:var(--text-soft);margin-top:var(--sp-4)">
             Calendar not loading? <a href="https://api.leadconnectorhq.com/widget/booking/9woHdesLUOeImkkjqV0r" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">Click here to schedule</a>.
           </p>
@@ -270,7 +297,6 @@
     </div>
   </footer>
 
-  <script src="https://api.leadconnectorhq.com/js/form_embed.js" type="text/javascript"></script>
   <script src="https://link.msgsndr.com/js/form_embed.js"></script>
   <script src="script.js"></script>
 
