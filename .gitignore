@@ -1,2 +1,7 @@
 .claude/
 .DS_Store
+
+# Private notes (synced by OneDrive, not published)
+CLAUDE.md
+PROGRESS.md
+email-rewrites/
